@@ -23,10 +23,10 @@ function attributes(){
 }
 
 function add_class(class_value){
-	return " class = '"+class_value+"'";
+	return " class='"+class_value+"'";
 }
 function add_id(id){
-	return " id = '"+id+"'";
+	return " id='"+id+"'";
 }
 
 
@@ -35,7 +35,7 @@ var attributes = ["class", "id"];
 for(key in html){
 	render += open(key);
 	"class" in html[key]? render += add_class(html[key]['class']): '';
-	"id" in html[key]? render += add_class(html[key]['id']): '';
+	"id" in html[key]? render += add_id(html[key]['id']): '';
 	render += gt();
 	render += close(key);
 	print(key);
