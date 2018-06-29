@@ -6,7 +6,7 @@ function print(key){
 	return key;
 }
 
-function open(key){
+function lt(key){
 	return "<"+key
 }
 function gt(){
@@ -33,12 +33,13 @@ function add_id(id){
 var attributes = ["class", "id"];
 
 for(key in html){
-	render += open(key);
+	render += lt(key);
 	"class" in html[key]? render += add_class(html[key]['class']): '';
 	"id" in html[key]? render += add_id(html[key]['id']): '';
 	render += gt();
+
+	
 	render += close(key);
-	print(key);
 }
 
 print(render)
