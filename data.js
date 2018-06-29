@@ -1,24 +1,5 @@
-
-// 	for(var key in file){
-// 		html = html+ '<'+key+'>';
-
-// 		if(Object.keys(file[key]).length){
-// 			for(var key1 in file[key]){
-// 				console.log(file[key][key1]);
-// 				html = html+ '<'+key1+'>';
-
-// 				html = html+'</'+key1+'>'
-// 			}
-// 		}
-// 		html = html+file['body']['content'];
-// 		html = html+'</'+key+'>';
-// 	}
-// 	console.log(html);	
-
 var html = require('./data.json');
-
 var render = "";
-
 
 function print(key){
 	console.log(key);
@@ -26,7 +7,10 @@ function print(key){
 }
 
 function open(key){
-	return "<"+key+">"
+	return "<"+key
+}
+function gt(){
+	return ">";
 }
 function close(key){
 	return "</"+key+">"
@@ -38,19 +22,23 @@ function attributes(){
 	}
 }
 
+function add_class(class_value){
+	return " class = '"+class_value+"'";
+}
+function add_id(id){
+	return " id = '"+id+"'";
+}
 
-var attributes = ["class", "id", "style","head","title"];
+
+var attributes = ["class", "id"];
 
 for(key in html){
 	render += open(key);
-
-	for(key1 in html[key]){
-		render += open(key1);
-		
-		render += close(key1);
-	}
-
+	"class" in html[key]? render += add_class(html[key]['class']): '';
+	"id" in html[key]? render += add_class(html[key]['id']): '';
+	render += gt();
 	render += close(key);
+	print(key);
 }
 
 print(render)
